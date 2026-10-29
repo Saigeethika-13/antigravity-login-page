@@ -6,3 +6,9 @@ desktop.ini
 # IDE settings
 .vscode/
 .idea/
+
+# Node dependencies & build output
+node_modules/
+dist/
+dist-ssr/
+*.local
