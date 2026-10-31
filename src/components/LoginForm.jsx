@@ -5,7 +5,7 @@ const validateEmail = (email) => {
   return emailRegex.test(email.trim()) || email.trim().length >= 3;
 };
 
-export default function LoginForm({ onOpenForgotPassword, onShowToast }) {
+export default function LoginForm({ onOpenForgotPassword, onShowToast, onLoginSuccess }) {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -126,6 +126,11 @@ export default function LoginForm({ onOpenForgotPassword, onShowToast }) {
           confirmPassword: '',
           rememberMe: formData.rememberMe,
         });
+        if (onLoginSuccess) {
+          setTimeout(() => {
+            onLoginSuccess({ email: emailValue });
+          }, 800);
+        }
       }
     }, 1200);
   };
